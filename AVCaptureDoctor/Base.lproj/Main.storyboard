@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AVCaptureDoctor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,172 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="200" horizontalCompressionResistancePriority="800" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pLB-Cy-BW6" userLabel="FormatButton">
+                                <rect key="frame" x="20" y="20" width="560" height="35"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Video Format">
+                                    <color key="titleColor" red="0.091608548379139287" green="0.51202101934523814" blue="0.14162803992254611" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="06C-zo-fbu" kind="presentation" identifier="formatSelectionSegue" id="CQT-l4-WNp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Focus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmV-ya-n4H" userLabel="Focus label">
+                                <rect key="frame" x="40" y="75" width="47" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nOh-M9-dwO" userLabel="Focus Slider">
+                                <rect key="frame" x="95" y="71" width="410" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="focusSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="mdh-vk-xOR"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Focus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38c-lt-cb4" userLabel="Current focus label">
+                                <rect key="frame" x="513" y="75" width="47" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iso" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdv-V3-TSp" userLabel="Iso label">
+                                <rect key="frame" x="64" y="116" width="23" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tre-fl-fON" userLabel="Iso Slider">
+                                <rect key="frame" x="95" y="112" width="410" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="isoSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OGT-C0-dNB"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iso" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aak-fP-79L" userLabel="Current Iso Label">
+                                <rect key="frame" x="513" y="116" width="47" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdC-CJ-EMz">
+                                <rect key="frame" x="97" y="162" width="51" height="31"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="flashSwitchToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="XvX-t0-p7e"/>
+                                </connections>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L34-Ho-Zl1" userLabel="VideoPreviewView">
+                                <rect key="frame" x="20" y="213" width="560" height="387"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuK-jx-dPL" userLabel="Flash label">
+                                <rect key="frame" x="40" y="167" width="41" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Aak-fP-79L" firstAttribute="trailing" secondItem="38c-lt-cb4" secondAttribute="trailing" id="6eC-X9-esB"/>
+                            <constraint firstItem="38c-lt-cb4" firstAttribute="leading" secondItem="nOh-M9-dwO" secondAttribute="trailing" constant="10" id="7sT-p2-7CY"/>
+                            <constraint firstItem="tre-fl-fON" firstAttribute="centerY" secondItem="Pdv-V3-TSp" secondAttribute="centerY" id="Azk-eO-M4r"/>
+                            <constraint firstItem="tre-fl-fON" firstAttribute="leading" secondItem="Pdv-V3-TSp" secondAttribute="trailing" constant="10" id="C4p-vO-UOS"/>
+                            <constraint firstItem="L34-Ho-Zl1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Cz3-3v-Gma"/>
+                            <constraint firstItem="pLB-Cy-BW6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="F4R-Cu-mNG"/>
+                            <constraint firstItem="tre-fl-fON" firstAttribute="width" secondItem="nOh-M9-dwO" secondAttribute="width" id="Fgo-8o-C2f"/>
+                            <constraint firstItem="PuK-jx-dPL" firstAttribute="leading" secondItem="JmV-ya-n4H" secondAttribute="leading" id="HRN-pQ-4ib"/>
+                            <constraint firstItem="Aak-fP-79L" firstAttribute="leading" secondItem="tre-fl-fON" secondAttribute="trailing" constant="10" id="Mhu-Bz-Xx8"/>
+                            <constraint firstItem="JmV-ya-n4H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Pve-qn-IUH"/>
+                            <constraint firstItem="mdC-CJ-EMz" firstAttribute="leading" secondItem="PuK-jx-dPL" secondAttribute="trailing" constant="16" id="RJQ-7x-LkF"/>
+                            <constraint firstItem="mdC-CJ-EMz" firstAttribute="centerY" secondItem="PuK-jx-dPL" secondAttribute="centerY" id="TMS-nV-XRa"/>
+                            <constraint firstItem="pLB-Cy-BW6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tgn-49-zN4"/>
+                            <constraint firstItem="JmV-ya-n4H" firstAttribute="top" secondItem="pLB-Cy-BW6" secondAttribute="bottom" constant="20" id="ViL-98-hpB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="L34-Ho-Zl1" secondAttribute="bottom" id="WFI-rd-roM"/>
+                            <constraint firstItem="Pdv-V3-TSp" firstAttribute="trailing" secondItem="JmV-ya-n4H" secondAttribute="trailing" id="XrB-IF-ejr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="38c-lt-cb4" secondAttribute="trailing" constant="20" id="a0A-YX-WlW"/>
+                            <constraint firstItem="L34-Ho-Zl1" firstAttribute="top" secondItem="mdC-CJ-EMz" secondAttribute="bottom" constant="20" id="cLh-Ie-yzQ"/>
+                            <constraint firstItem="Aak-fP-79L" firstAttribute="centerY" secondItem="tre-fl-fON" secondAttribute="centerY" id="gys-OZ-oNG"/>
+                            <constraint firstItem="L34-Ho-Zl1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j9X-9F-hYb"/>
+                            <constraint firstItem="nOh-M9-dwO" firstAttribute="leading" secondItem="JmV-ya-n4H" secondAttribute="trailing" constant="10" id="lBt-jg-uqV"/>
+                            <constraint firstItem="38c-lt-cb4" firstAttribute="centerY" secondItem="nOh-M9-dwO" secondAttribute="centerY" id="mqV-lg-GoF"/>
+                            <constraint firstItem="nOh-M9-dwO" firstAttribute="centerY" secondItem="JmV-ya-n4H" secondAttribute="centerY" id="rjS-wm-Lka"/>
+                            <constraint firstItem="PuK-jx-dPL" firstAttribute="top" secondItem="Pdv-V3-TSp" secondAttribute="bottom" constant="30" id="s7r-nZ-lji"/>
+                            <constraint firstItem="Pdv-V3-TSp" firstAttribute="top" secondItem="JmV-ya-n4H" secondAttribute="bottom" constant="20" id="skT-NL-55S"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentFocusLabel" destination="38c-lt-cb4" id="hDf-OY-bxO"/>
+                        <outlet property="currentIsoLabel" destination="Aak-fP-79L" id="IhR-54-IOw"/>
+                        <outlet property="flashButton" destination="mdC-CJ-EMz" id="1su-K8-jfk"/>
+                        <outlet property="focusSlider" destination="nOh-M9-dwO" id="Tcq-33-56q"/>
+                        <outlet property="formatButton" destination="pLB-Cy-BW6" id="CDx-7E-6JK"/>
+                        <outlet property="isoSlider" destination="tre-fl-fON" id="HuG-et-0A6"/>
+                        <outlet property="videoPreviewView" destination="L34-Ho-Zl1" id="06d-Zn-isL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="291" y="444"/>
+        </scene>
+        <!--Format SelectionVC-->
+        <scene sceneID="9cZ-EN-Qz0">
+            <objects>
+                <viewController id="06C-zo-fbu" customClass="FormatSelectionVC" customModule="AVCaptureDoctor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UEF-R2-zpq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wkn-HQ-r35"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hAD-Gu-IuS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjS-cu-l0u" userLabel="VideoFormatPickerView">
+                                <rect key="frame" x="20" y="0.0" width="560" height="216"/>
+                                <animations/>
+                                <connections>
+                                    <outlet property="dataSource" destination="06C-zo-fbu" id="hH5-TH-I7k"/>
+                                    <outlet property="delegate" destination="06C-zo-fbu" id="doi-Y2-KGZ"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82y-RB-H8T">
+                                <rect key="frame" x="20" y="564" width="560" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="selectionDoneButtonPressed:" destination="06C-zo-fbu" eventType="touchUpInside" id="AHU-Qz-PcO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jjS-cu-l0u" firstAttribute="leading" secondItem="hAD-Gu-IuS" secondAttribute="leadingMargin" id="ElY-Zz-aAs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jjS-cu-l0u" secondAttribute="trailing" id="Kv0-s0-HSP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="82y-RB-H8T" secondAttribute="trailing" id="Z1I-iL-YtQ"/>
+                            <constraint firstItem="82y-RB-H8T" firstAttribute="leading" secondItem="hAD-Gu-IuS" secondAttribute="leadingMargin" id="ZfR-4t-LuI"/>
+                            <constraint firstItem="jjS-cu-l0u" firstAttribute="top" secondItem="hAD-Gu-IuS" secondAttribute="topMargin" id="iRH-z9-8f0"/>
+                            <constraint firstItem="Wkn-HQ-r35" firstAttribute="top" secondItem="82y-RB-H8T" secondAttribute="bottom" id="s4O-mu-TEV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="videoFormatPicker" destination="jjS-cu-l0u" id="GMA-GP-8kz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLe-hs-912" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="444"/>
         </scene>
     </scenes>
 </document>

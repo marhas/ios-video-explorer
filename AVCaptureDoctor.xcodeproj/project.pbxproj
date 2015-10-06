@@ -14,6 +14,8 @@
 		1FB9CAD11BBFBA5400A3618A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB9CACF1BBFBA5400A3618A /* LaunchScreen.storyboard */; };
 		1FB9CADC1BBFBA5400A3618A /* AVCaptureDoctorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9CADB1BBFBA5400A3618A /* AVCaptureDoctorTests.swift */; };
 		1FB9CAE71BBFBA5400A3618A /* AVCaptureDoctorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9CAE61BBFBA5400A3618A /* AVCaptureDoctorUITests.swift */; };
+		1FB9CAF51BC103B900A3618A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB9CAF41BC103B900A3618A /* AVFoundation.framework */; };
+		1FB9CAF71BC3164A00A3618A /* FormatSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB9CAF61BC3164A00A3618A /* FormatSelectionVC.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		1FB9CAE21BBFBA5400A3618A /* AVCaptureDoctorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AVCaptureDoctorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB9CAE61BBFBA5400A3618A /* AVCaptureDoctorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureDoctorUITests.swift; sourceTree = "<group>"; };
 		1FB9CAE81BBFBA5400A3618A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FB9CAF41BC103B900A3618A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1FB9CAF61BC3164A00A3618A /* FormatSelectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatSelectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB9CAF51BC103B900A3618A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,7 @@
 		1FB9CABA1BBFBA5400A3618A = {
 			isa = PBXGroup;
 			children = (
+				1FB9CAF41BC103B900A3618A /* AVFoundation.framework */,
 				1FB9CAC51BBFBA5400A3618A /* AVCaptureDoctor */,
 				1FB9CADA1BBFBA5400A3618A /* AVCaptureDoctorTests */,
 				1FB9CAE51BBFBA5400A3618A /* AVCaptureDoctorUITests */,
@@ -99,6 +105,7 @@
 			children = (
 				1FB9CAC61BBFBA5400A3618A /* AppDelegate.swift */,
 				1FB9CAC81BBFBA5400A3618A /* ViewController.swift */,
+				1FB9CAF61BC3164A00A3618A /* FormatSelectionVC.swift */,
 				1FB9CACA1BBFBA5400A3618A /* Main.storyboard */,
 				1FB9CACD1BBFBA5400A3618A /* Assets.xcassets */,
 				1FB9CACF1BBFBA5400A3618A /* LaunchScreen.storyboard */,
@@ -257,6 +264,7 @@
 			files = (
 				1FB9CAC91BBFBA5400A3618A /* ViewController.swift in Sources */,
 				1FB9CAC71BBFBA5400A3618A /* AppDelegate.swift in Sources */,
+				1FB9CAF71BC3164A00A3618A /* FormatSelectionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
