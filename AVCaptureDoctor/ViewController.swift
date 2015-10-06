@@ -22,7 +22,7 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     var session:AVCaptureSession!
     var videoDevice:AVCaptureDevice!
     var audioDevice:AVCaptureDevice!
-    var selectedVideoFormat:AVCaptureDeviceFormat!
+    var selectedVideoFormat:AVCaptureDeviceFormat?
     var previewLayer:AVCaptureVideoPreviewLayer!
 
     
@@ -31,7 +31,11 @@ class ViewController: UIViewController, UIPickerViewDelegate {
         flashButton?.on = false
         session = AVCaptureSession()
         self.initVideo()
-        formatButton.titleLabel?.text = self.selectedVideoFormat.friendlyString()
+        var videoFormatLabel = "No video device available"
+        if (self.selectedVideoFormat != nil) {
+             videoFormatLabel = (self.selectedVideoFormat?.friendlyString())!
+        }
+        formatButton.setTitle(videoFormatLabel, forState: .Normal)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -43,7 +47,7 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        formatButton.titleLabel?.text = self.selectedVideoFormat.friendlyString()
+        formatButton.titleLabel?.text = self.selectedVideoFormat?.friendlyString()
         formatButton.titleLabel?.sizeToFit()
     }
     
@@ -53,7 +57,7 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     }
 
     override func viewDidLayoutSubviews() {
-        previewLayer.frame = self.videoPreviewView.bounds
+        previewLayer?.frame = self.videoPreviewView.bounds
     }
     
     @IBAction func flashSwitchToggled(sender: UISwitch) {
@@ -65,7 +69,11 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     }
     
     private func initVideo() {
-        videoDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        guard let videoDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo) else {
+            print("No video capture device avaialbe on this hardware")
+            return
+        }
+        
         setVideoFormat(getVideoFormats()[0])
         
         setCameraFocus(0.5)

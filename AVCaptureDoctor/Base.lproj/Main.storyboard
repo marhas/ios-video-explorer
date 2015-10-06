@@ -32,7 +32,7 @@
                                 <rect key="frame" x="40" y="75" width="47" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nOh-M9-dwO" userLabel="Focus Slider">
@@ -46,14 +46,14 @@
                                 <rect key="frame" x="513" y="75" width="47" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iso" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdv-V3-TSp" userLabel="Iso label">
                                 <rect key="frame" x="64" y="116" width="23" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tre-fl-fON" userLabel="Iso Slider">
@@ -67,7 +67,7 @@
                                 <rect key="frame" x="513" y="116" width="47" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdC-CJ-EMz">
@@ -78,7 +78,7 @@
                                 </connections>
                             </switch>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L34-Ho-Zl1" userLabel="VideoPreviewView">
-                                <rect key="frame" x="20" y="213" width="560" height="387"/>
+                                <rect key="frame" x="0.0" y="213" width="600" height="387"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -86,7 +86,7 @@
                                 <rect key="frame" x="40" y="167" width="41" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -97,7 +97,7 @@
                             <constraint firstItem="38c-lt-cb4" firstAttribute="leading" secondItem="nOh-M9-dwO" secondAttribute="trailing" constant="10" id="7sT-p2-7CY"/>
                             <constraint firstItem="tre-fl-fON" firstAttribute="centerY" secondItem="Pdv-V3-TSp" secondAttribute="centerY" id="Azk-eO-M4r"/>
                             <constraint firstItem="tre-fl-fON" firstAttribute="leading" secondItem="Pdv-V3-TSp" secondAttribute="trailing" constant="10" id="C4p-vO-UOS"/>
-                            <constraint firstItem="L34-Ho-Zl1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Cz3-3v-Gma"/>
+                            <constraint firstItem="L34-Ho-Zl1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Cz3-3v-Gma"/>
                             <constraint firstItem="pLB-Cy-BW6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="F4R-Cu-mNG"/>
                             <constraint firstItem="tre-fl-fON" firstAttribute="width" secondItem="nOh-M9-dwO" secondAttribute="width" id="Fgo-8o-C2f"/>
                             <constraint firstItem="PuK-jx-dPL" firstAttribute="leading" secondItem="JmV-ya-n4H" secondAttribute="leading" id="HRN-pQ-4ib"/>
@@ -112,7 +112,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="38c-lt-cb4" secondAttribute="trailing" constant="20" id="a0A-YX-WlW"/>
                             <constraint firstItem="L34-Ho-Zl1" firstAttribute="top" secondItem="mdC-CJ-EMz" secondAttribute="bottom" constant="20" id="cLh-Ie-yzQ"/>
                             <constraint firstItem="Aak-fP-79L" firstAttribute="centerY" secondItem="tre-fl-fON" secondAttribute="centerY" id="gys-OZ-oNG"/>
-                            <constraint firstItem="L34-Ho-Zl1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j9X-9F-hYb"/>
+                            <constraint firstItem="L34-Ho-Zl1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j9X-9F-hYb"/>
                             <constraint firstItem="nOh-M9-dwO" firstAttribute="leading" secondItem="JmV-ya-n4H" secondAttribute="trailing" constant="10" id="lBt-jg-uqV"/>
                             <constraint firstItem="38c-lt-cb4" firstAttribute="centerY" secondItem="nOh-M9-dwO" secondAttribute="centerY" id="mqV-lg-GoF"/>
                             <constraint firstItem="nOh-M9-dwO" firstAttribute="centerY" secondItem="JmV-ya-n4H" secondAttribute="centerY" id="rjS-wm-Lka"/>
