@@ -33,7 +33,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, FormatSelectionDel
         self.initVideo()
         var videoFormatLabel = "No video device available"
         if (self.selectedVideoFormat != nil) {
-             videoFormatLabel = (self.selectedVideoFormat?.friendlyShortDescription()())!
+             videoFormatLabel = (self.selectedVideoFormat?.friendlyShortDescription())!
         }
         formatButton.setTitle(videoFormatLabel, forState: .Normal)
     }
@@ -72,7 +72,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, FormatSelectionDel
             print("No video capture device avaialbe on this hardware")
             return
         }
-        
+        self.videoDevice = videoDevice
         setVideoFormat(getVideoFormats()[0])
         
         setCameraFocus(0.5)
@@ -126,7 +126,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, FormatSelectionDel
             self.selectedVideoFormat = format;
             videoDevice.focusMode = .Locked
 
-            print("Changed video mode to: \(videoDevice.activeFormat.friendlyString())")
+            print("Changed video mode to: \(videoDevice.activeFormat.friendlyShortDescription())")
         } catch {
             print("Error trying to set video capture format to \(format)");
         }
@@ -187,13 +187,34 @@ extension AVCaptureDeviceFormat {
         let xDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).width
         let yDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).height
         let avFrameRateRanges = self.videoSupportedFrameRateRanges
-        let avFrameRateRangeString = "\((avFrameRateRanges[0] as! AVFrameRateRange).minFrameRate) - \((avFrameRateRanges[0] as! AVFrameRateRange).maxFrameRate)"
-        let isoRange = "\(self.minISO)-\(self.maxISO)"
+        let minFrameRate = (avFrameRateRanges[0] as! AVFrameRateRange).minFrameRate
+        let maxFrameRate = (avFrameRateRanges[0] as! AVFrameRateRange).maxFrameRate
+        let avFrameRateRangeString = "\(Int(minFrameRate)) - \(Int(maxFrameRate))"
+        let isoRange = "\(Int(self.minISO))-\(Int(self.maxISO))"
         
-        var friendlyFormatString = "\(xDimension)x\(yDimension) \(isoRange) \(avFrameRateRangeString)"
+        var friendlyFormatString = "Dimensions: \(xDimension)x\(yDimension)\n"
+        friendlyFormatString.appendContentsOf("Iso range: \(isoRange)\n")
+        friendlyFormatString.appendContentsOf("Frame rate range: \(avFrameRateRangeString)\n")
         if (self.videoBinned) {
-            friendlyFormatString.appendContentsOf("(binned)")
+            friendlyFormatString.appendContentsOf("Binned\n")
         }
+        if (self.videoHDRSupported) {
+            friendlyFormatString.appendContentsOf("HDR supported\n")
+        }
+        if (self.autoFocusSystem == AVCaptureAutoFocusSystem.ContrastDetection) {
+            friendlyFormatString.appendContentsOf("AF mode: contrast detection\n")
+        } else if self.autoFocusSystem == AVCaptureAutoFocusSystem.PhaseDetection {
+            friendlyFormatString.appendContentsOf("AF mode: phase detection\n")
+        }
+        if self.isVideoStabilizationModeSupported(AVCaptureVideoStabilizationMode.Cinematic) {
+            friendlyFormatString.appendContentsOf("Video stabilization mode: Cinematic\n")
+        } else if self.isVideoStabilizationModeSupported(AVCaptureVideoStabilizationMode.Standard) {
+            friendlyFormatString.appendContentsOf("Video stabilization mode: Standard\n")
+        }
+        friendlyFormatString.appendContentsOf("Media type: \(self.mediaType)\n")
+        friendlyFormatString.appendContentsOf("Max zoom factor: \(self.videoMaxZoomFactor)\n")
+        friendlyFormatString.appendContentsOf("Field of view: \(self.videoFieldOfView)\n")
+
         if (avFrameRateRanges.count > 1) {
             print("Warning, format (\(friendlyFormatString)) contains multiple frame rate ranges")
         }
@@ -204,8 +225,10 @@ extension AVCaptureDeviceFormat {
         let xDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).width
         let yDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).height
         let avFrameRateRanges = self.videoSupportedFrameRateRanges
-        let avFrameRateRangeString = "\((avFrameRateRanges[0] as! AVFrameRateRange).minFrameRate) - \((avFrameRateRanges[0] as! AVFrameRateRange).maxFrameRate)"
-        let isoRange = "\(self.minISO)-\(self.maxISO)"
+        let minFrameRate = (avFrameRateRanges[0] as! AVFrameRateRange).minFrameRate
+        let maxFrameRate = (avFrameRateRanges[0] as! AVFrameRateRange).maxFrameRate
+        let avFrameRateRangeString = "\(Int(minFrameRate)) - \(Int(maxFrameRate))"
+        let isoRange = "\(Int(self.minISO))-\(Int(self.maxISO))"
         
         let friendlyFormatString = "\(xDimension)x\(yDimension) \(isoRange) \(avFrameRateRangeString)"
         return friendlyFormatString

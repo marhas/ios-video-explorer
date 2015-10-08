@@ -24,6 +24,10 @@ class FormatSelectionVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     var selectedFormat : AVCaptureDeviceFormat?
     var mainViewController: ViewController?
     
+    override func viewWillAppear(animated: Bool) {
+        updateFormatLabel(videoFormats[0]);
+    }
+    
     //MARK: UIPickerViewDataSource
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return videoFormats.count
@@ -40,7 +44,11 @@ class FormatSelectionVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         delegate?.didSelectFormat(videoFormats[row])
-        formatDescriptionLabel.text = videoFormats[row].friendlyDescription()
+        updateFormatLabel(videoFormats[row])
+    }
+    
+    private func updateFormatLabel(format: AVCaptureDeviceFormat) {
+        formatDescriptionLabel.text = format.friendlyDescription()
     }
 }
 
