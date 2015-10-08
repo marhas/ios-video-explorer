@@ -11,11 +11,14 @@ import AVFoundation
 
 class FormatSelectionVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
 
+    var delegate : FormatSelectionDelegate?
+    
     @IBAction func selectionDoneButtonPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true) { () -> Void in
             
         }
     }
+    @IBOutlet weak var formatDescriptionLabel: UILabel!
     @IBOutlet weak var videoFormatPicker: UIPickerView!
     var videoFormats: [AVCaptureDeviceFormat]!
     var selectedFormat : AVCaptureDeviceFormat?
@@ -32,12 +35,15 @@ class FormatSelectionVC: UIViewController, UIPickerViewDataSource, UIPickerViewD
     
     //MARK: UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return videoFormats[row].friendlyString()
+        return videoFormats[row].friendlyShortDescription()
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedFormat = videoFormats[row]
-        mainViewController?.setVideoFormat(videoFormats[row])
+        delegate?.didSelectFormat(videoFormats[row])
+        formatDescriptionLabel.text = videoFormats[row].friendlyDescription()
     }
+}
 
+protocol FormatSelectionDelegate {
+    func didSelectFormat(_: AVCaptureDeviceFormat);
 }

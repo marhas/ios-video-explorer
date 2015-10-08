@@ -123,10 +123,10 @@
                     <connections>
                         <outlet property="currentFocusLabel" destination="38c-lt-cb4" id="hDf-OY-bxO"/>
                         <outlet property="currentIsoLabel" destination="Aak-fP-79L" id="IhR-54-IOw"/>
-                        <outlet property="flashButton" destination="mdC-CJ-EMz" id="1su-K8-jfk"/>
                         <outlet property="focusSlider" destination="nOh-M9-dwO" id="Tcq-33-56q"/>
                         <outlet property="formatButton" destination="pLB-Cy-BW6" id="CDx-7E-6JK"/>
                         <outlet property="isoSlider" destination="tre-fl-fON" id="HuG-et-0A6"/>
+                        <outlet property="torchModeSwitch" destination="mdC-CJ-EMz" id="WRW-ZD-YMG"/>
                         <outlet property="videoPreviewView" destination="L34-Ho-Zl1" id="06d-Zn-isL"/>
                     </connections>
                 </viewController>
@@ -154,8 +154,8 @@
                                     <outlet property="delegate" destination="06C-zo-fbu" id="doi-Y2-KGZ"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82y-RB-H8T">
-                                <rect key="frame" x="20" y="564" width="560" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82y-RB-H8T" userLabel="Done button">
+                                <rect key="frame" x="20" y="544" width="560" height="36"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Done"/>
@@ -163,19 +163,31 @@
                                     <action selector="selectionDoneButtonPressed:" destination="06C-zo-fbu" eventType="touchUpInside" id="AHU-Qz-PcO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVt-Yl-M58" userLabel="Format description label">
+                                <rect key="frame" x="40" y="236" width="0.0" height="0.0"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="WVt-Yl-M58" secondAttribute="trailing" constant="20" id="9UY-Qn-ZvD"/>
                             <constraint firstItem="jjS-cu-l0u" firstAttribute="leading" secondItem="hAD-Gu-IuS" secondAttribute="leadingMargin" id="ElY-Zz-aAs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jjS-cu-l0u" secondAttribute="trailing" id="Kv0-s0-HSP"/>
+                            <constraint firstItem="WVt-Yl-M58" firstAttribute="top" secondItem="jjS-cu-l0u" secondAttribute="bottom" constant="20" id="SRW-pb-NC3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="82y-RB-H8T" secondAttribute="trailing" id="Z1I-iL-YtQ"/>
                             <constraint firstItem="82y-RB-H8T" firstAttribute="leading" secondItem="hAD-Gu-IuS" secondAttribute="leadingMargin" id="ZfR-4t-LuI"/>
+                            <constraint firstItem="82y-RB-H8T" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WVt-Yl-M58" secondAttribute="bottom" constant="20" id="dHp-f9-Ebp"/>
                             <constraint firstItem="jjS-cu-l0u" firstAttribute="top" secondItem="hAD-Gu-IuS" secondAttribute="topMargin" id="iRH-z9-8f0"/>
-                            <constraint firstItem="Wkn-HQ-r35" firstAttribute="top" secondItem="82y-RB-H8T" secondAttribute="bottom" id="s4O-mu-TEV"/>
+                            <constraint firstItem="Wkn-HQ-r35" firstAttribute="top" secondItem="82y-RB-H8T" secondAttribute="bottom" constant="20" id="s4O-mu-TEV"/>
+                            <constraint firstItem="WVt-Yl-M58" firstAttribute="leading" secondItem="hAD-Gu-IuS" secondAttribute="leadingMargin" constant="20" id="xEB-lB-979"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="formatDescriptionLabel" destination="WVt-Yl-M58" id="Kbi-8Y-TkS"/>
                         <outlet property="videoFormatPicker" destination="jjS-cu-l0u" id="GMA-GP-8kz"/>
                     </connections>
                 </viewController>

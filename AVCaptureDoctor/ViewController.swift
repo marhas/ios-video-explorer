@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, UIPickerViewDelegate {
+class ViewController: UIViewController, UIPickerViewDelegate, FormatSelectionDelegate {
 
     @IBOutlet weak var formatButton: UIButton!
     @IBOutlet weak var videoPreviewView: UIView!
@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet weak var isoSlider: UISlider!
     @IBOutlet weak var currentFocusLabel: UILabel!
     @IBOutlet weak var currentIsoLabel: UILabel!
-    @IBOutlet weak var flashButton: UISwitch!
+    @IBOutlet weak var torchModeSwitch: UISwitch!
     
     var session:AVCaptureSession!
     var videoDevice:AVCaptureDevice!
@@ -28,12 +28,12 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        flashButton?.on = false
+        torchModeSwitch?.on = false
         session = AVCaptureSession()
         self.initVideo()
         var videoFormatLabel = "No video device available"
         if (self.selectedVideoFormat != nil) {
-             videoFormatLabel = (self.selectedVideoFormat?.friendlyString())!
+             videoFormatLabel = (self.selectedVideoFormat?.friendlyShortDescription()())!
         }
         formatButton.setTitle(videoFormatLabel, forState: .Normal)
     }
@@ -47,13 +47,12 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        formatButton.titleLabel?.text = self.selectedVideoFormat?.friendlyString()
+        formatButton.titleLabel?.text = self.selectedVideoFormat?.friendlyShortDescription()
         formatButton.titleLabel?.sizeToFit()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func viewDidLayoutSubviews() {
@@ -118,6 +117,7 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     
     func setVideoFormat(format: AVCaptureDeviceFormat) {
         defer {
+            enableFlash(torchModeSwitch.on)
             videoDevice.unlockForConfiguration()
         }
         do {
@@ -175,11 +175,15 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     @IBAction func isoSliderValueChanged(sender: UISlider) {
         self.setCameraIso(sender.value)
     }
-    
+
+    //MARK: FormatSelectionDelegate
+    func didSelectFormat(format: AVCaptureDeviceFormat) {
+        setVideoFormat(format)
+    }
 }
 
 extension AVCaptureDeviceFormat {
-    func friendlyString() -> String {
+    func friendlyDescription() -> String {
         let xDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).width
         let yDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).height
         let avFrameRateRanges = self.videoSupportedFrameRateRanges
@@ -195,5 +199,15 @@ extension AVCaptureDeviceFormat {
         }
         return friendlyFormatString
 
+    }
+    func friendlyShortDescription() -> String {
+        let xDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).width
+        let yDimension = CMVideoFormatDescriptionGetDimensions(self.formatDescription).height
+        let avFrameRateRanges = self.videoSupportedFrameRateRanges
+        let avFrameRateRangeString = "\((avFrameRateRanges[0] as! AVFrameRateRange).minFrameRate) - \((avFrameRateRanges[0] as! AVFrameRateRange).maxFrameRate)"
+        let isoRange = "\(self.minISO)-\(self.maxISO)"
+        
+        let friendlyFormatString = "\(xDimension)x\(yDimension) \(isoRange) \(avFrameRateRangeString)"
+        return friendlyFormatString
     }
 }
